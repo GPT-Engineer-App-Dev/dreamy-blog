@@ -1,8 +1,12 @@
-import { Box, Container, Flex, Heading, Text, VStack, Link } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Text, VStack, Link, useColorModeValue } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
 const Index = ({ posts }) => {
+  const bg = useColorModeValue("white", "gray.800");
+  const color = useColorModeValue("gray.800", "white");
+
   return (
+    <Container maxW="container.xl" p={0} bg={bg} color={color}>
     <Container maxW="container.xl" p={0}>
       <Flex direction="column" minH="100vh">
         {/* Header */}
