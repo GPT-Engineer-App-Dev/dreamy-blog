@@ -7,7 +7,6 @@ const Index = ({ posts }) => {
 
   return (
     <Container maxW="container.xl" p={0} bg={bg} color={color}>
-    <Container maxW="container.xl" p={0}>
       <Flex direction="column" minH="100vh">
         {/* Header */}
         <Box as="header" bg="brand.700" color="white" py={4}>
