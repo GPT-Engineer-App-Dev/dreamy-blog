@@ -1,7 +1,7 @@
 import { Box, Container, Flex, Heading, Text, VStack, Link } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
-const Index = () => {
+const Index = ({ posts }) => {
   return (
     <Container maxW="container.xl" p={0}>
       <Flex direction="column" minH="100vh">
@@ -15,6 +15,9 @@ const Index = () => {
               <Flex as="nav">
                 <Link as={RouterLink} to="/" px={2} color="white">
                   Home
+                </Link>
+                <Link as={RouterLink} to="/add-post" px={2} color="white">
+                  Add Post
                 </Link>
                 <Link as={RouterLink} to="/about" px={2} color="white">
                   About
@@ -34,9 +37,17 @@ const Index = () => {
               <Heading as="h2" size="xl">
                 Welcome to My Blog
               </Heading>
-              <Text fontSize="lg">
-                This is a placeholder for blog posts. Stay tuned for more content!
-              </Text>
+              {posts.length === 0 ? (
+                <Text fontSize="lg">This is a placeholder for blog posts. Stay tuned for more content!</Text>
+              ) : (
+                posts.map((post, index) => (
+                  <Box key={index} p={4} borderWidth="1px" borderRadius="md" w="100%">
+                    <Heading as="h3" size="md">{post.title}</Heading>
+                    <Text mt={2}>{post.content}</Text>
+                    <Text mt={2} fontSize="sm" color="gray.500">By {post.author} on {post.date}</Text>
+                  </Box>
+                ))
+              )}
             </VStack>
           </Container>
         </Box>
