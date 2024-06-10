@@ -13,6 +13,11 @@ function App() {
     setPosts([...posts, post]);
   };
 
+  const deletePost = (index) => {
+    const newPosts = posts.filter((_, i) => i !== index);
+    setPosts(newPosts);
+  };
+
   return (
     <Router>
       <Box>
@@ -22,7 +27,7 @@ function App() {
           </Button>
         </Flex>
         <Routes>
-          <Route exact path="/" element={<Index posts={posts} />} />
+          <Route exact path="/" element={<Index posts={posts} deletePost={deletePost} />} />
           <Route path="/add-post" element={<AddPost addPost={addPost} />} />
         </Routes>
       </Box>

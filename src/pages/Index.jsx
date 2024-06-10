@@ -1,7 +1,7 @@
-import { Box, Container, Flex, Heading, Text, VStack, Link, useColorModeValue } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Text, VStack, Link, useColorModeValue, Button } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
-const Index = ({ posts }) => {
+const Index = ({ posts, deletePost }) => {
   const bg = useColorModeValue("white", "gray.800");
   const color = useColorModeValue("gray.800", "white");
 
@@ -48,6 +48,7 @@ const Index = ({ posts }) => {
                     <Heading as="h3" size="md">{post.title}</Heading>
                     <Text mt={2}>{post.content}</Text>
                     <Text mt={2} fontSize="sm" color="gray.500">By {post.author} on {post.date}</Text>
+                    <Button mt={2} colorScheme="red" onClick={() => deletePost(index)}>Delete</Button>
                   </Box>
                 ))
               )}
